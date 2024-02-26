@@ -2,32 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #101533;
+  color: white;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.card {
+  background-color: #1e2258;
+  box-shadow: -4px 5px 17px -5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -4px 5px 17px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 5px 17px -5px rgba(0, 0, 0, 0.75);
+}
+
+.main-task .card {
+  background-color: #2e336e;
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+.modal {
+  color: black !important;
+}
+
+/* css */
+.pro-image {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+select,
+input,
+textarea {
+  outline: none !important;
+}
+
+.cl-avatarBox {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100% !important;
+  height: 50px !important;
+  opacity: 0;
+}
+.sidebar.active {
+  display: block !important;
+}
+.cl-internal-b3fm6y {
+  display: none !important;
+}
+.cl-userButtonPopoverFooter {
+  display: none !important;
+}
+.mobile-menu {
+  top: 50%;
+  right: 10px;
+}
+input,
+select {
+  outline: none;
 }
