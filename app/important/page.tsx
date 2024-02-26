@@ -23,6 +23,7 @@ const Important = () => {
   const [updateIsImportant, setUpdateIsImportant] = useState(false);
   const [important, setImportant] = useState<any[]>([]);
   const { userId } = useAuth();
+  console.log(userId);
 
   // single task
   const showValue = (id: any) => {
