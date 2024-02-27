@@ -4,9 +4,11 @@ import "./globals.css";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { ClerkProvider, auth } from "@clerk/nextjs";
 import "react-toastify/dist/ReactToastify.css";
+import { getAuth } from "@clerk/nextjs/server";
 
 const inter = Inter({ subsets: ["latin"] });
-const { userId } = auth();
+//@ts-ignore
+let userId = async (req: Request) => getAuth(req);
 
 export const metadata: Metadata = {
   title: "Task Manager",
