@@ -1,13 +1,11 @@
 import prisma from "@/app/utils/connect";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import { getAuth } from "@clerk/nextjs/server";
-import { NextApiRequest } from "next";
 
 // Create a new task
-export const POST = async (req: NextApiRequest) => {
+export const POST = async (req: Request) => {
   try {
-    const { userId } = getAuth(req);
+    const { userId } = auth();
     if (!userId) {
       return new NextResponse("Unauthorized", {
         status: 401,
@@ -44,9 +42,9 @@ export const POST = async (req: NextApiRequest) => {
 
 // Get Tasks
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req: Request) => {
   try {
-    const { userId } = getAuth(req);
+    const { userId } = auth();
     if (!userId) {
       return new NextResponse("Unauthorized", {
         status: 401,
