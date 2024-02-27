@@ -1,5 +1,4 @@
 import prisma from "@/app/utils/connect";
-import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
 // Update Task

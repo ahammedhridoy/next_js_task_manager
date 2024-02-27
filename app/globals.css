@@ -71,3 +71,24 @@ input,
 select {
   outline: none;
 }
+
+@media screen and (min-width: 1024px) {
+  .sidebar {
+    width: 25% !important;
+    left: 20px !important;
+  }
+  .main-sec {
+    width: 75% !important;
+    margin-left: 30% !important;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .sidebar {
+    width: 20% !important;
+    left: 10% !important;
+  }
+  .main-sec {
+    width: 70% !important;
+    margin-left: 25% !important;
+  }
+}

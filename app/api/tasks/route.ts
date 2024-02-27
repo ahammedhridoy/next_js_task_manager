@@ -1,5 +1,4 @@
 import prisma from "@/app/utils/connect";
-import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
 
@@ -65,7 +64,11 @@ export const GET = async (req: Request) => {
         status: 401,
       });
     }
-    const tasks = await prisma.task.findMany({});
+    const tasks = await prisma.task.findMany({
+      orderBy: {
+        updatedAt: "desc",
+      },
+    });
     return new NextResponse(JSON.stringify(tasks), {
       status: 200,
     });

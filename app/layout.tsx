@@ -26,14 +26,18 @@ export default function RootLayout({
         <body className={inter.className}>
           <div className="container">
             <div className={userId ? "flex gap-5" : ""}>
-              <div className="basis-1/5 fixed top-3 left-40 w-[300px] hidden lg:block sidebar">
-                {userId && <Sidebar />}
-              </div>
+              {userId ? (
+                <div className="basis-1/5 fixed top-3 left-40 w-[300px] hidden lg:block sidebar">
+                  {userId && <Sidebar />}
+                </div>
+              ) : (
+                ""
+              )}
               <div
                 className={
                   userId
-                    ? "lg:basis-4/5 basis-full lg:ml-[300px] m-2 mt-4"
-                    : "basis-full"
+                    ? "lg:basis-4/5 basis-full lg:ml-[300px] m-2 mt-4 main-sec"
+                    : "basis-full main-sec"
                 }
               >
                 {children}
