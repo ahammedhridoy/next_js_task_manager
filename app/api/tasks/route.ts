@@ -1,6 +1,7 @@
 import prisma from "@/app/utils/connect";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+import { getAuth } from "@clerk/nextjs/server";
 
 // Create a new task
 //@ts-ignore
@@ -8,7 +9,7 @@ export const POST = async (req: Request) => {
   //@ts-ignore
   try {
     //@ts-ignore
-    const { userId } = auth();
+    const { userId } = getAuth();
     //@ts-ignore
     if (!userId) {
       //@ts-ignore
@@ -57,7 +58,8 @@ export const POST = async (req: Request) => {
 
 export const GET = async (req: Request) => {
   try {
-    const { userId } = auth();
+    //@ts-ignore
+    const { userId } = getAuth();
     if (!userId) {
       return new NextResponse("Unauthorized", {
         status: 401,
@@ -73,31 +75,3 @@ export const GET = async (req: Request) => {
     });
   }
 };
-
-// Update Complete
-// export const PUT = async (req: Request) => {
-//   try {
-//     const { userId } = auth();
-//     const { isCompleted, id } = await req.json();
-//     if (!userId) {
-//       return new NextResponse("Unauthorized", {
-//         status: 401,
-//       });
-//     }
-//     const task = await prisma.task.update({
-//       where: {
-//         id,
-//       },
-//       data: isCompleted,
-//     });
-//     console.log(task);
-//     return new NextResponse(JSON.stringify(task), {
-//       status: 200,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     return new NextResponse("Error Updating Task", {
-//       status: 500,
-//     });
-//   }
-// };
