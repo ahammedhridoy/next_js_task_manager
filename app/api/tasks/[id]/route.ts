@@ -1,14 +1,15 @@
 import prisma from "@/app/utils/connect";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-
+import { getAuth } from "@clerk/nextjs/server";
 // Update Task
 export const PUT = async (
   req: Request,
   { params }: { params: { id: string } }
 ) => {
   try {
-    const { userId } = auth();
+    //@ts-ignore
+    const { userId } = getAuth(req);
     const { title, description, date, isCompleted, isImportant } =
       await req.json();
     const { id } = params;
@@ -46,7 +47,8 @@ export const DELETE = async (
   { params }: { params: { id: string } }
 ) => {
   try {
-    const { userId } = auth();
+    //@ts-ignore
+    const { userId } = getAuth(req);
     console.log(userId);
     const { id } = params;
     console.log(id);
@@ -78,7 +80,8 @@ export const PATCH = async (
   { params }: { params: { id: string } }
 ) => {
   try {
-    const { userId } = auth();
+    //@ts-ignore
+    const { userId } = getAuth(req);
     const { isCompleted } = await req.json();
     const { id } = params;
     if (!userId) {
