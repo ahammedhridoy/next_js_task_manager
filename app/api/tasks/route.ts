@@ -9,7 +9,7 @@ export const POST = async (req: Request) => {
   //@ts-ignore
   try {
     //@ts-ignore
-    const { userId } = getAuth();
+    const { userId } = getAuth(req);
     //@ts-ignore
     if (!userId) {
       //@ts-ignore
@@ -59,7 +59,7 @@ export const POST = async (req: Request) => {
 export const GET = async (req: Request) => {
   try {
     //@ts-ignore
-    const { userId } = getAuth();
+    const { userId } = getAuth(req);
     if (!userId) {
       return new NextResponse("Unauthorized", {
         status: 401,
