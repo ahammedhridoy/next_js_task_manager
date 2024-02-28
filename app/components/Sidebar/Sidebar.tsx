@@ -19,12 +19,6 @@ const Sidebar = () => {
   //@ts-ignore
   let userId = async (req: Request) => getAuth(req);
 
-  const logOut = () => {
-    signOut();
-    router.push("/signin");
-    localStorage.clear();
-  };
-
   return (
     <div className="card-wrapper">
       {userId && (
@@ -68,7 +62,7 @@ const Sidebar = () => {
               </div>
               <button
                 className="flex gap-2 justify-center items-center text-2xl font-bold"
-                onClick={() => logOut()}
+                onClick={() => signOut(() => router.push("/signin"))}
               >
                 <FaSignOutAlt />
                 Signout
